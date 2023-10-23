@@ -23,7 +23,7 @@
               <?php
                 foreach ($shoe_array['shoes'] as $product) {
                   echo '<div class = "App_shopItem">';//div shopitem
-                  echo '<div class = "App_shopItemImage" style="background-color: rgb(225, 231, 237);"><img src='. $product['image'].'></div>';
+                  echo '<div class = "App_shopItemImage" style="background-color:'.$product['color'].';"><img src='. $product['image'].'></div>';
                   echo '<div class = "App_shopItemName">'. $product['name'].'</div>';
                   echo '<div class = "App_shopItemDescription">'. $product['description'].'</div>';
                   echo '<div class = "App_shopItemBottom">';//div shopitem bottom
@@ -33,7 +33,7 @@
                                                           data-product-name="'.$product['name'].'" 
                                                           data-product-price="'.$product['price'].'" 
                                                           data-product-color="'.$product['color'].'" ><p>ADD TO CART</p></div>';
-                  echo '<div class = "App_inactive App_shopItemButton"></div>';
+                  echo '<div class = "App_inactive App_shopItemButton"> <div class="App_shopItemButtonCover"><div class="App_shopItemButtonCoverCheckIcon"><img src="./app/assets/check.png"></div></div></div>';
                   echo '</div>';//close div shopitem bottom
                   echo '</div>';//close div shopitem
                 }
@@ -76,28 +76,32 @@
 
             <div class="App_CartBody">
               <div>
-
-                <div class="App_cartItem">
-                  <div class="App_cartItemLeft">
-                    <div class="App_cartItemImage cartItemImage" style="background-color: rgb(225, 231, 237);">
-                      <div class="App_cartItemImageBlock"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1315882/air-zoom-pegasus-36-mens-running-shoe-wide-D24Mcz-removebg-preview.png"></div>
-                    </div>
-                  </div>
-                
-
-                  <div class="App_cartItemRight cartItemRight">
-                    <div class="App_cartItemName cartItemName">Nike Air Zoom Pegasus 36</div>
-                    <div class="App_cartItemPrice cartItemPrice">$108.97</div>
-                    <div class="App_cartItemActions cartItemActions">
-                      <div class="App_cartItemCount cartItemCount">
-                        <div class="App_cartItemCountButton">-</div>
-                        <div class="App_cartItemCountNumber">1</div>
-                        <div class="App_cartItemCountButton">+</div>
+                <?php
+                  foreach ($shoe_array['shoes'] as $product) {
+                    echo '<div class="App_cartItem">
+                    <div class="App_cartItemLeft">
+                      <div class="App_cartItemImage cartItemImage" style="background-color:'.$product['color'].';">
+                        <div class="App_cartItemImageBlock"><img src='.$product['image'].'></div>
                       </div>
-                      <div class="App_cartItemRemove cartItemRemove"><img src="./app/assets/trash.png"></div>
                     </div>
-                  </div>
-                </div>
+                  
+  
+                    <div class="App_cartItemRight cartItemRight">
+                      <div class="App_cartItemName cartItemName">'.$product['name'].'</div>
+                      <div class="App_cartItemPrice cartItemPrice">'.$product['price'].'</div>
+                      <div class="App_cartItemActions cartItemActions">
+                        <div class="App_cartItemCount cartItemCount">
+                          <div class="App_cartItemCountButton">-</div>
+                          <div class="App_cartItemCountNumber">0</div>
+                          <div class="App_cartItemCountButton">+</div>
+                        </div>
+                        <div class="App_cartItemRemove cartItemRemove"><img src="./app/assets/trash.png"></div>
+                      </div>
+                    </div>
+                  </div>';
+                  }
+                ?>
+                
               </div>
 
             </div>
